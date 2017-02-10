@@ -4,16 +4,19 @@ $(() => {
   // const $button = $('.button');
   const $buttonYo = $('.buttonyo');
 
-  const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'Squirrel', 'aardvark'];
+  const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark'];
+
+  let randomWord = null;
+  let inputtedText = null;
 
   // Gets the random word from the array
   function getRandomWords() {
-    const $randomNumber = [Math.floor(Math.random() * $words.length)];
+    const $randomNumber = Math.floor(Math.random() * $words.length);
     // alert(randomNumber);
     // alert($words[randomNumber]);
-    var $randomWord = $words[$randomNumber];
-    // $li.text($randomWord);
-    jumbleWord($randomWord);
+    randomWord = $words[$randomNumber];
+    // $li.text(randomWord);
+    jumbleWord(randomWord);
   }
 
   // Jumbles the word chosen from getRandomWords
@@ -29,16 +32,25 @@ $(() => {
     }
     const $jumbledWord = (a.join(''));
     // alert($jumbledWord);
-    $li.text($jumbledWord); // return the jumbled word
+    $li.text($jumbledWord); // displays the jumbled word
   }
 
   // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
   $buttonYo.on('click', (e) => {
     e.preventDefault();
-    const inputtedText = $('#buttonyo').val();
+    inputtedText = $('#buttonyo').val();
     console.log(inputtedText);
-
+    checkMatch();
   });
+
+  // check to see if the word is the same as users word
+  function checkMatch() {
+    if (inputtedText === randomWord) {
+      alert('You have matched the words CORRECTLY');
+    } else {
+      alert('INCORRECT');
+    }
+  }
 
   getRandomWords();
 
