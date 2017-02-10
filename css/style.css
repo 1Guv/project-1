@@ -12,7 +12,7 @@ main {
   /*background-color: #dadada;*/
   width: 900;
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   /*overflow: hidden;*/
@@ -52,4 +52,38 @@ input {
 
 button {
   top: 100px;
+}
+
+.timer {
+  background-color: grey;
+  padding: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.score {
+  padding: 10px;
+  /*background-color: yellow;*/
+  border: 2px solid blue;
+  width: 100;
+  text-align: center;
+  margin: 25px;
+  width: 150px;
+  display: block;
+  /*margin: 0 auto;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.start {
+  padding: 25px;
+  background-color: green;
+  border: 1px solid black;
+  width: 200px;
+  text-align: center;
+  display: block;
+  /*margin: 0 auto;*/
+  margin-left: auto;
+  margin-right: auto;
 }
