@@ -24,13 +24,32 @@ ul {
 }
 
 li {
-  border: 5px solid black;
+  border: 5px solid orange;
   padding: 5;
   /*height: 10px;*/
   position: relative;
   display: inline-block;
   margin: -3px;
-  width: 200px;
-  height: 39px;
+  width: 400px;
+  height: 80px;
   text-align: center;
+  font-size: 50px
+}
+
+/*Style the form and input with button*/
+form input, button{
+  display: block;
+  margin: 10px auto;
+  width: 150px;
+  text-align: center;
+}
+
+input {
+  /*background-color: grey;*/
+  padding: 2px;
+  margin: 10px;
+}
+
+button {
+  top: 100px;
 }

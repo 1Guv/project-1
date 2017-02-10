@@ -1,10 +1,9 @@
 $(() => {
 
-  const $li = $('li');
-  // const $button = $('.button');
+  const $liOne = $('.one');
   const $buttonYo = $('.buttonyo');
 
-  const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark'];
+  const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'barracuda', 'crocodile'];
 
   let randomWord = null;
   let inputtedText = null;
@@ -15,7 +14,7 @@ $(() => {
     // alert(randomNumber);
     // alert($words[randomNumber]);
     randomWord = $words[$randomNumber];
-    // $li.text(randomWord);
+    // $liOne.text(randomWord);
     jumbleWord(randomWord);
   }
 
@@ -32,7 +31,7 @@ $(() => {
     }
     const $jumbledWord = (a.join(''));
     // alert($jumbledWord);
-    $li.text($jumbledWord); // displays the jumbled word
+    $liOne.text($jumbledWord); // displays the jumbled word
   }
 
   // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
@@ -43,7 +42,7 @@ $(() => {
     checkMatch();
   });
 
-  // check to see if the word is the same as users word
+  // check to see if the random word is the same as users inputted word
   function checkMatch() {
     if (inputtedText === randomWord) {
       alert('You have matched the words CORRECTLY');
@@ -71,5 +70,5 @@ $(() => {
 // const $divs = $('div');
 
 // $button.on('click', (e) => {
-//   $li.text('Yo');
+//   $liOne.text('Yo');
 // });
