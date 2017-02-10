@@ -1,3 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: red;
+  font-family: 'verdana', monospace;
+  text-align: center;
+  /*width: 900px;*/
+}
+
+main {
+  /*background-color: #dadada;*/
+  width: 900;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*overflow: hidden;*/
+}
+
+ul {
+  position: relative;
+  padding: 0;
+}
+
+li {
+  border: 5px solid black;
+  padding: 5;
+  /*height: 10px;*/
+  position: relative;
+  display: inline-block;
+  margin: -3px;
+  width: 200px;
+  height: 39px;
+  text-align: center;
 }
