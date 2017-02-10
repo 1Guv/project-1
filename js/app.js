@@ -2,6 +2,10 @@ $(() => {
 
   const $liOne = $('.one');
   const $buttonYo = $('.buttonyo');
+  const $timer = $('.timer');
+  let time = 30;
+  const $display = $('.display');
+  const $startButton = $('.start');
 
   const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'barracuda', 'crocodile'];
 
@@ -11,10 +15,7 @@ $(() => {
   // Gets the random word from the array
   function getRandomWords() {
     const $randomNumber = Math.floor(Math.random() * $words.length);
-    // alert(randomNumber);
-    // alert($words[randomNumber]);
     randomWord = $words[$randomNumber];
-    // $liOne.text(randomWord);
     jumbleWord(randomWord);
   }
 
@@ -30,17 +31,8 @@ $(() => {
       a[j] = tmp;
     }
     const $jumbledWord = (a.join(''));
-    // alert($jumbledWord);
     $liOne.text($jumbledWord); // displays the jumbled word
   }
-
-  // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
-  $buttonYo.on('click', (e) => {
-    e.preventDefault();
-    inputtedText = $('#buttonyo').val();
-    console.log(inputtedText);
-    checkMatch();
-  });
 
   // check to see if the random word is the same as users inputted word
   function checkMatch() {
@@ -51,7 +43,38 @@ $(() => {
     }
   }
 
-  getRandomWords();
+  function startTimer() {
+    // resetGame();
+    // toggleBoard();
+    // generateSum();
+    $timer.addClass('active');
+
+    const timerId = setInterval(() => {
+      time--;
+      $timer.html(time);
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(timerId);
+      $display.html('Stop!');
+      $buttonYo.html('Play again?');
+      // toggleBoard();
+    }, 30000); // stop timer after 30 seconds
+  }
+
+  // EVENT LISTENERS
+  // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
+  $buttonYo.on('click', (e) => {
+    e.preventDefault();
+    inputtedText = $('#buttonyo').val();
+    console.log(inputtedText);
+    checkMatch();
+  });
+
+  $startButton.on('click', () => {
+    startTimer();
+    getRandomWords();
+  });
 
 });
 
