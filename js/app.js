@@ -7,7 +7,7 @@ $(() => {
   const $display = $('.display');
   const $startButton = $('.start');
 
-  const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'barracuda', 'crocodile'];
+  const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
 
   let randomWord = null;
   let inputtedText = null;
