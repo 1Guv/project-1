@@ -1,46 +1,70 @@
 $(() => {
 
-  const $liOne = $('.one');
-  const $buttonYo = $('.buttonyo');
+  //VARIABLES/////////////////////////////////////
+
+  const $screenWidth = $(window).width();
+  const $screenHeight = $(window).height();
+
+  const $container = $('.container');
+  const $box1 = $('.box1');
+  const $box2 = $('.box2');
+  const $box3 = $('.box3');
+  const $leftButton = $('.left');
+  const $rightButton = $('.right');
+  const $bonus = $('.bonus');
+  const $credits = $('.credits');
+
   const $timer = $('.timer');
   let time = 30;
   const $display = $('.display');
-  const $startButton = $('.start');
+  const $buttonYo = $('.buttonyo');
 
+  let inputtedText = null;
+  let randomWord = null;
+  const $startButton = $('.start');
+  const $liOne = $('.one');
+
+  //ARRAY & OBJECTS////////////////////////
   const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
 
-  let randomWord = null;
-  let inputtedText = null;
 
-  // Gets the random word from the array
-  function getRandomWords() {
-    const $randomNumber = Math.floor(Math.random() * $words.length);
-    randomWord = $words[$randomNumber];
-    jumbleWord(randomWord);
+
+  ////////////////////////////
+
+  function slideLeft() {
+    $box1.animate({
+      opacity: 1,
+      left: 0
+    }, {
+      // animation complete
+    });
   }
 
-  // Jumbles the word chosen from getRandomWords
-  function jumbleWord(x) {
-    const a = x.split('');
-    const n = a.length;
-
-    for(var i = n - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = a[i];
-      a[i] = a[j];
-      a[j] = tmp;
-    }
-    const $jumbledWord = (a.join(''));
-    $liOne.text($jumbledWord); // displays the jumbled word
+  function slideRight() {
+    $box1.animate({
+      opacity: 1,
+      left: $screenWidth - 30 // slides right to the end - 30 so you can see the start of the div
+    }, {
+      // animation complete
+    });
   }
 
-  // check to see if the random word is the same as users inputted word
-  function checkMatch() {
-    if (inputtedText === randomWord) {
-      alert('You have matched the words CORRECTLY');
-    } else {
-      alert('INCORRECT');
-    }
+  // SETS THE WIDTH & HEIGHT FOR THE CURRENT VIEWING SCREEN IN CSS BOX1, 2 AND 3 & container
+  function setScreenSize() {
+    $container.css('height', $screenHeight);
+    $container.css('width', $screenWidth);
+
+    $box1.css('height', $screenHeight);
+    $box1.css('width', $screenWidth);
+    $box1.css('left', $screenWidth - 30); // width from the right
+
+    $box2.css('height', $screenHeight);
+    $box2.css('width', $screenWidth);
+    $box2.css('left', $screenWidth - 20); // width from the right
+
+    $box3.css('height', $screenHeight);
+    $box3.css('width', $screenWidth);
+    $box3.css('left', $screenWidth - 10); // width from the right
   }
 
   function startTimer() {
@@ -62,7 +86,61 @@ $(() => {
     }, 30000); // stop timer after 30 seconds
   }
 
-  // EVENT LISTENERS
+  // check to see if the random word is the same as users inputted word
+  function checkMatch() {
+    if (inputtedText === randomWord) {
+      alert('You have matched the words CORRECTLY');
+    } else {
+      alert('INCORRECT');
+    }
+  }
+
+  // Jumbles the word chosen from getRandomWords
+  function jumbleWord(x) {
+    const a = x.split('');
+    const n = a.length;
+
+    for(var i = n - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i];
+      a[i] = a[j];
+      a[j] = tmp;
+    }
+    const $jumbledWord = (a.join(''));
+    $liOne.text($jumbledWord); // displays the jumbled word
+  }
+
+  // Gets the random word from the array
+  function getRandomWords() {
+    const $randomNumber = Math.floor(Math.random() * $words.length);
+    randomWord = $words[$randomNumber];
+    jumbleWord(randomWord);
+  }
+
+  function bonusScreen() {
+    $box2.animate({
+      opacity: 1,
+      left: 0 // slides right to the end
+    }, {
+      // animation complete
+    });
+  }
+
+  function creditsScreen() {
+    $box3.animate({
+      opacity: 1,
+      left: 0 // slides right to the end
+    }, {
+      // animation complete
+    });
+  }
+
+  // EVENT LISTENERS ARE LISTED HERE:
+  $leftButton.on('click', slideLeft);
+  $rightButton.on('click', slideRight);
+  $bonus.on('click', bonusScreen);
+  $credits.on('click', creditsScreen);
+
   // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
   $buttonYo.on('click', (e) => {
     e.preventDefault();
@@ -76,22 +154,26 @@ $(() => {
     getRandomWords();
   });
 
+  // CALLED FUNCTIONS START HERE:
+  setScreenSize();
+
+
 });
 
 
-// how do i grab text input after the submit button is pressed
-// how do i center my li exactly
-// how do i put letters into an li without the box increasing in size
-// add the favicon to the website
-
-// const $main = $('.main');
-// const $ul = $('ul');
-// const $one = $('.one');
-// const $two = $('.two');
-// const $three = $('.three');
-// const $d1 = $('.d1');
-// const $divs = $('div');
-
-// $button.on('click', (e) => {
-//   $liOne.text('Yo');
+// $( "#clickme" ).click(function() {
+//   $( "#book" ).animate({
+//     opacity: 0.25,
+//     left: "+=50",
+//     height: "toggle"
+//   }, 5000, function() {
+//     // Animation complete.
+//   });
 // });
+
+// $fallingDiv.animate({
+//       top: 565
+//     }, {
+//       duration: 3000,
+//       easing: 'linear',
+//     });
