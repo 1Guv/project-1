@@ -23,6 +23,7 @@ $(() => {
   let randomWord = null;
   const $startButton = $('.start');
   const $liOne = $('.one');
+  let currentPage = null;
 
   //ARRAY & OBJECTS////////////////////////
   const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
@@ -31,22 +32,24 @@ $(() => {
 
   ////////////////////////////
 
-  function slideLeft() {
+  function playScreen() {
     $box1.animate({
       opacity: 1,
       left: 0
     }, {
       // animation complete
     });
+    currentPage = 'playpage';
   }
 
-  function slideRight() {
+  function menuScreen() {
     $box1.animate({
       opacity: 1,
       left: $screenWidth - 30 // slides right to the end - 30 so you can see the start of the div
     }, {
       // animation complete
     });
+    currentPage = 'menupage';
   }
 
   // SETS THE WIDTH & HEIGHT FOR THE CURRENT VIEWING SCREEN IN CSS BOX1, 2 AND 3 & container
@@ -124,6 +127,7 @@ $(() => {
     }, {
       // animation complete
     });
+    currentPage = 'bonuspage';
   }
 
   function creditsScreen() {
@@ -133,11 +137,12 @@ $(() => {
     }, {
       // animation complete
     });
+    currentPage = 'creditpage';
   }
 
   // EVENT LISTENERS ARE LISTED HERE:
-  $leftButton.on('click', slideLeft);
-  $rightButton.on('click', slideRight);
+  $leftButton.on('click', playScreen);
+  $rightButton.on('click', menuScreen);
   $bonus.on('click', bonusScreen);
   $credits.on('click', creditsScreen);
 

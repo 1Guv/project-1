@@ -77,6 +77,14 @@ div.levels {
   position: absolute;
 }
 
+div.game-form {
+  /*background-color: yellow;*/
+  top: 32%;
+  position: relative;
+  max-width: 292%;
+  margin: 0 auto;
+}
+
 .timer {
   /*background-color: grey;*/
   /*padding: 50px;*/
@@ -101,26 +109,26 @@ div.levels {
 }
 
 .start {
-  padding: 25px;
-  background-color: green;
-  border: 1px solid black;
-  width: 200px;
+  /*padding: 25px;*/
+  /*background-color: green;*/
+  /*border: 1px solid black;*/
+  /*width: 200px;*/
   text-align: center;
   display: block;
   margin: 0 auto;
-  top: 400px;
-  position: relative;
+  top: 70%;
+  position: absolute;
+  width: 100%;
 }
 
 form.game-form {
   position: relative;
   margin: 0 auto;
   display: block;
-  top: 175px;
-  width 205px;
+  top: 60%;
   text-align: center;
   padding: 10px;
-  width: 200px;
+  width: 20%;
 }
 
 .buttonyo {
@@ -129,8 +137,8 @@ form.game-form {
 }
 
 #buttonyo {
-  height: 50px;
-  width: 200px;
+  height: 60px;
+  width: 300px;
   text-align: center;
 }
 
@@ -146,6 +154,7 @@ ul {
 
 li {
   border: 5px solid orange;
+  background-color: white;
   padding: 5;
   /*height: 10px;*/
   position: relative;
@@ -154,34 +163,46 @@ li {
   width: 400px;
   height: 80px;
   text-align: center;
-  font-size: 50px
+  font-size: 60px
 }
 
 .button {
-  display: inline-block;
-  border:1px solid #C9AE34;
-  color: #705D07;
-  border-radius: 3px 3px 3px 3px;
-  -webkit-border-radius: 3px 3px 3px 3px;
-  -moz-border-radius: 3px 3px 3px 3px;
-  font-family: Verdana;
-  width: auto;
-  height: auto;
-  font-size: 16px;
-  padding: 10px 40px;
-  box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
-  -moz-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
-  -webkit-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D,0 2px 4px 0 #D4D4D4;
-  text-shadow: 0 1px 0 #FFFFFF;
-  background-image: linear-gradient(to top, #FCE374, #FCDF5B);
-  background-color: #FCE374;
-  }
-
-.button:hover, .button:active{
-  border:1px solid #967D09;
-  color: #705D07;
-  box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D;
-  -moz-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D;
-  -webkit-box-shadow: inset 0 1px 0 0 #FFF6CE,inset 0 -1px 0 0 #E3C852,inset 0 0 0 1px #FCE88D;
-  background-color: #FCDF5B;
- }
+	-moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+	background:-moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+	background-color:#ffec64;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:19px 38px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
+}
+.button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+	background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+	background-color:#ffab23;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
