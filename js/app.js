@@ -27,17 +27,19 @@ $(() => {
   // let currentPage = null;
 
   const $score = $('.score');
-
+  // const chosenLevel = $('#options option:selected').val();
+  let chosenLevel = 'MEDUIM';
+  let chosenWordArray = null;
   //SOUNDS////////////////////////////////
   const $buzzerSound = $('#buzzer');
   const $shoryukenSound = $('#shoryuken');
   ///////////////////////////////////////
 
   //ARRAY & OBJECTS////////////////////////
-  const $easyLetterWords = ['bag', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'toad', 'bear'];
-  const $meduimLetterWords = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
-  const $hardLetterWords = ['Arctic Hare', 'Chimpanzee', 'Field Mouse', 'Paddymelon', 'Rhinoceros', 'Sperm Whale'];
-  const $impossible = ['Hippopotamus', 'Spider Monkey', 'Mountain Lion', 'Bandicoot rat', 'Grey Squirrel'];
+  const easyLetterWords = ['mole', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'toad', 'bear', 'hare'];
+  const meduimLetterWords = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile', 'mouse'];
+  const hardLetterWords = ['Arctic Hare', 'Chimpanzee', 'Field Mouse', 'Paddymelon', 'Rhinoceros', 'Sperm Whale'];
+  const impossible = ['Hippopotamus', 'Spider Monkey', 'Mountain Lion', 'Bandicoot Rat', 'Grey Squirrel'];
 
   ////////////////////////////
 
@@ -49,7 +51,7 @@ $(() => {
       // animation complete
     });
     // currentPage = 'playpage';
-    scoreScreen().delay(5000);
+    scoreScreen();
   }
 
   function scoreScreen() {
@@ -90,9 +92,7 @@ $(() => {
   }
 
   function startTimer() {
-    // resetGame();
-    // toggleBoard();
-    // generateSum();
+
     $timer.addClass('active');
 
     const timerId = setInterval(() => {
@@ -112,21 +112,20 @@ $(() => {
   // and changes the input color if its wrong or correct
   function checkMatch() {
     if (inputtedText === randomWord) {
-      // make this box glow
-      // highlight text to green
+      $shoryukenSound[0].play();
       $inputTextArea.css('color', 'green');
       $inputTextArea.css('font-weight', 'bold');
       $inputTextArea.css('font-size', 30);
       $('input').addClass('animated flip'); // green & flips out when correct
       // alert('You have matched the words CORRECTLY');
-      $shoryukenSound[0].play();
+
     } else {
       // alert('INCORRECT');
+      $buzzerSound[0].play();
       $inputTextArea.css('color', 'red');
       $inputTextArea.css('font-weight', 'bold');
       $inputTextArea.css('font-size', 30);
       $('input').addClass('animated shake'); // red and shakes the input box
-      $buzzerSound[0].play();
     }
   }
 
@@ -147,9 +146,21 @@ $(() => {
 
   // Gets the random word from the array
   function getRandomWords() {
-    const $randomNumber = Math.floor(Math.random() * $meduimLetterWords.length);
-    randomWord = $meduimLetterWords[$randomNumber];
+    const $randomNumber = Math.floor(Math.random() * chosenWordArray.length);
+    randomWord = chosenWordArray[$randomNumber];
     jumbleWord(randomWord.toUpperCase());
+  }
+
+  function difficultyLevel() {
+    if (chosenLevel === 'EASY') {
+      chosenWordArray = easyLetterWords;
+    } else if (chosenLevel === 'MEDUIM') {
+      chosenWordArray = meduimLetterWords;
+    } else if (chosenLevel === 'HARD') {
+      chosenWordArray = hardLetterWords;
+    } else if (chosenLevel === 'IMPOSSIBLE') {
+      chosenWordArray = impossible;
+    }
   }
 
   // function bonusScreen() {
@@ -188,7 +199,10 @@ $(() => {
 
   $startButton.on('click', () => {
     startTimer();
+    chosenLevel = $('select[name=selector]').val(); // CHOSEN LEVELS GETS STORED HERE
+    difficultyLevel();
     getRandomWords();
+    // alert(chosenLevel);
   });
 
   // CALLED FUNCTIONS START HERE:
