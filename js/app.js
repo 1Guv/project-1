@@ -112,20 +112,32 @@ $(() => {
   // and changes the input color if its wrong or correct
   function checkMatch() {
     if (inputtedText === randomWord) {
-      $shoryukenSound[0].play();
+
       $inputTextArea.css('color', 'green');
       $inputTextArea.css('font-weight', 'bold');
       $inputTextArea.css('font-size', 30);
       $('input').addClass('animated flip'); // green & flips out when correct
+      $shoryukenSound[0].play();
+
+      setTimeout(function() {
+        $('input').removeClass('animated flip'); // remove class after 3 seconds
+      }, 3000);
+
+      getRandomWords();
       // alert('You have matched the words CORRECTLY');
 
-    } else {
+    } else if (inputtedText !== randomWord) {
       // alert('INCORRECT');
-      $buzzerSound[0].play();
       $inputTextArea.css('color', 'red');
       $inputTextArea.css('font-weight', 'bold');
       $inputTextArea.css('font-size', 30);
       $('input').addClass('animated shake'); // red and shakes the input box
+      $buzzerSound[0].play();
+
+      setTimeout(function() {
+        $('input').removeClass('animated shake'); // removes class after 3seconds
+      }, 3000);
+
     }
   }
 
