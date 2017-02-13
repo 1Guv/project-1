@@ -27,6 +27,7 @@ $(() => {
   // let currentPage = null;
 
   const $score = $('.score');
+  let totalScore = null;
   // const chosenLevel = $('#options option:selected').val();
   let chosenLevel = 'MEDUIM';
   let chosenWordArray = null;
@@ -121,9 +122,16 @@ $(() => {
 
       setTimeout(function() {
         $('input').removeClass('animated flip'); // remove class after 3 seconds
-      }, 3000);
+        // remove the word from the box
+        $inputTextArea.val('');
+        $inputTextArea.attr('placeholder', 'Type your guess here'); // reupdates the placeholder
+        $inputTextArea.css('font-size', 20);
+        $inputTextArea.css('color', '#aaa');
+      }, 2000);
 
       getRandomWords();
+      // updateScore();
+      // nextWord();
       // alert('You have matched the words CORRECTLY');
 
     } else if (inputtedText !== randomWord) {
@@ -173,6 +181,16 @@ $(() => {
     } else if (chosenLevel === 'IMPOSSIBLE') {
       chosenWordArray = impossible;
     }
+  }
+
+  function nextWord() {
+    $inputTextArea.val('');
+    time = 30;
+  }
+
+  function updateScore() {
+    totalScore = totalScore + 10;
+    $score.val('totalScore');
   }
 
   // function bonusScreen() {
