@@ -129,8 +129,8 @@ $(() => {
         $inputTextArea.css('color', '#aaa');
       }, 2000);
 
+      updateScore();
       getRandomWords();
-      // updateScore();
       // nextWord();
       // alert('You have matched the words CORRECTLY');
 
@@ -183,14 +183,15 @@ $(() => {
     }
   }
 
-  function nextWord() {
-    $inputTextArea.val('');
-    time = 30;
-  }
+  // function nextWord() {
+  //   $inputTextArea.val('');
+  //   time = 30;
+  // }
 
   function updateScore() {
     totalScore = totalScore + 10;
-    $score.val('totalScore');
+    $score.text(totalScore);
+    console.log(totalScore);
   }
 
   // function bonusScreen() {
