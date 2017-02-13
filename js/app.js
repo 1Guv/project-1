@@ -11,8 +11,8 @@ $(() => {
   const $box3 = $('.box3');
   const $leftButton = $('.left');
   const $rightButton = $('.right');
-  const $bonus = $('.bonus');
-  const $credits = $('.credits');
+  // const $bonus = $('.bonus');
+  // const $credits = $('.credits');
 
   const $timer = $('.timer');
   let time = 30;
@@ -23,14 +23,15 @@ $(() => {
   let randomWord = null;
   const $startButton = $('.start');
   const $liOne = $('.one');
-  let currentPage = null;
+  // let currentPage = null;
 
   const $score = $('.score');
 
   //ARRAY & OBJECTS////////////////////////
-  const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
-
-
+  const $easyLetterWords = ['bag', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'toad', 'bear'];
+  const $meduimLetterWords = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
+  const $hardLetterWords = ['Arctic Hare', 'Chimpanzee', 'Field Mouse', 'Paddymelon', 'Rhinoceros', 'Sperm Whale'];
+  const $impossible = ['Hippopotamus', 'Spider Monkey', 'Mountain Lion', 'Bandicoot rat', 'Grey Squirrel'];
 
   ////////////////////////////
 
@@ -41,7 +42,7 @@ $(() => {
     }, {
       // animation complete
     });
-    currentPage = 'playpage';
+    // currentPage = 'playpage';
     scoreScreen().delay(5000);
   }
 
@@ -61,7 +62,7 @@ $(() => {
     }, {
       // animation complete
     });
-    currentPage = 'menupage';
+    // currentPage = 'menupage';
   }
 
   // SETS THE WIDTH & HEIGHT FOR THE CURRENT VIEWING SCREEN IN CSS BOX1, 2 AND 3 & container
@@ -127,36 +128,36 @@ $(() => {
 
   // Gets the random word from the array
   function getRandomWords() {
-    const $randomNumber = Math.floor(Math.random() * $words.length);
-    randomWord = $words[$randomNumber];
+    const $randomNumber = Math.floor(Math.random() * $meduimLetterWords.length);
+    randomWord = $meduimLetterWords[$randomNumber];
     jumbleWord(randomWord.toUpperCase());
   }
 
-  function bonusScreen() {
-    $box2.animate({
-      opacity: 1,
-      left: 0 // slides right to the end
-    }, {
-      // animation complete
-    });
-    currentPage = 'bonuspage';
-  }
+  // function bonusScreen() {
+  //   $box2.animate({
+  //     opacity: 1,
+  //     left: 0 // slides right to the end
+  //   }, {
+  //     // animation complete
+  //   });
+  //   currentPage = 'bonuspage';
+  // }
 
-  function creditsScreen() {
-    $box3.animate({
-      opacity: 1,
-      left: 0 // slides right to the end
-    }, {
-      // animation complete
-    });
-    currentPage = 'creditpage';
-  }
+  // function creditsScreen() {
+  //   $box3.animate({
+  //     opacity: 1,
+  //     left: 0 // slides right to the end
+  //   }, {
+  //     // animation complete
+  //   });
+  //   currentPage = 'creditpage';
+  // }
 
   // EVENT LISTENERS ARE LISTED HERE:
   $leftButton.on('click', playScreen);
   $rightButton.on('click', menuScreen);
-  $bonus.on('click', bonusScreen);
-  $credits.on('click', creditsScreen);
+  // $bonus.on('click', bonusScreen);
+  // $credits.on('click', creditsScreen);
 
   // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
   $buttonYo.on('click', (e) => {
