@@ -25,6 +25,8 @@ $(() => {
   const $liOne = $('.one');
   let currentPage = null;
 
+  const $score = $('.score');
+
   //ARRAY & OBJECTS////////////////////////
   const $words = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
 
@@ -40,6 +42,16 @@ $(() => {
       // animation complete
     });
     currentPage = 'playpage';
+    scoreScreen();
+  }
+
+  function scoreScreen() {
+    $score.animate({
+      opacity: 1,
+      top: 5
+    }, {
+      // animation complete
+    });
   }
 
   function menuScreen() {
