@@ -42,7 +42,7 @@ $(() => {
       // animation complete
     });
     currentPage = 'playpage';
-    scoreScreen();
+    scoreScreen().delay(5000);
   }
 
   function scoreScreen() {
@@ -129,7 +129,7 @@ $(() => {
   function getRandomWords() {
     const $randomNumber = Math.floor(Math.random() * $words.length);
     randomWord = $words[$randomNumber];
-    jumbleWord(randomWord);
+    jumbleWord(randomWord.toUpperCase());
   }
 
   function bonusScreen() {
