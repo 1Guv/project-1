@@ -18,6 +18,7 @@ $(() => {
   let time = 30;
   const $display = $('.display');
   const $buttonYo = $('.buttonyo');
+  const $inputTextArea = $('#buttonyo');
 
   let inputtedText = null;
   let randomWord = null;
@@ -26,6 +27,11 @@ $(() => {
   // let currentPage = null;
 
   const $score = $('.score');
+
+  //SOUNDS////////////////////////////////
+  const $buzzerSound = $('#buzzer');
+  const $shoryukenSound = $('#shoryuken');
+  ///////////////////////////////////////
 
   //ARRAY & OBJECTS////////////////////////
   const $easyLetterWords = ['bag', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'toad', 'bear'];
@@ -103,11 +109,24 @@ $(() => {
   }
 
   // check to see if the random word is the same as users inputted word
+  // and changes the input color if its wrong or correct
   function checkMatch() {
     if (inputtedText === randomWord) {
-      alert('You have matched the words CORRECTLY');
+      // make this box glow
+      // highlight text to green
+      $inputTextArea.css('color', 'green');
+      $inputTextArea.css('font-weight', 'bold');
+      $inputTextArea.css('font-size', 30);
+      $('input').addClass('animated flip'); // green & flips out when correct
+      // alert('You have matched the words CORRECTLY');
+      $shoryukenSound[0].play();
     } else {
-      alert('INCORRECT');
+      // alert('INCORRECT');
+      $inputTextArea.css('color', 'red');
+      $inputTextArea.css('font-weight', 'bold');
+      $inputTextArea.css('font-size', 30);
+      $('input').addClass('animated shake'); // red and shakes the input box
+      $buzzerSound[0].play();
     }
   }
 
@@ -177,21 +196,3 @@ $(() => {
 
 
 });
-
-
-// $( "#clickme" ).click(function() {
-//   $( "#book" ).animate({
-//     opacity: 0.25,
-//     left: "+=50",
-//     height: "toggle"
-//   }, 5000, function() {
-//     // Animation complete.
-//   });
-// });
-
-// $fallingDiv.animate({
-//       top: 565
-//     }, {
-//       duration: 3000,
-//       easing: 'linear',
-//     });
