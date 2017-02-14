@@ -6,6 +6,11 @@
   overflow: hidden;
   /*border: 1px solid black;*/
   margin: 0 auto;
+
+  background-image: url('../images/leopard.jpg');
+  background-repeat: cover;
+  opacity: 0.9;
+
 }
 
 .box1 {
@@ -15,6 +20,9 @@
   height: 800px;
   width: 100%;
   left: 1020px;
+  background-image: url('../images/giraffe.jpg');
+  background-repeat: cover;
+  opacity: 0.9;
 }
 
 .box2 {
@@ -24,6 +32,10 @@
   height: 800px;
   width: 100%;
   left: 1040px;
+
+  background-image: url('../images/tiger.jpg');
+  background-repeat: cover;
+  opacity: 1;
 }
 
 .box3 {
@@ -55,18 +67,24 @@ div.game-name {
   width: 100%;
   font-family: 'Lobster Two', cursive;
   font-weight: bold;
-  color: white;
+  color: #ff0;
+  /*color: black;*/
+
+  /*-webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: white;*/
 }
 
 div.findtheword {
-  /*background-color: white;*/
+  background-color: #333333;
   position: absolute;
   /*padding: 200px;*/
-  top: 250px;
+  top: 44%;
   width: 100%;
   text-align: center;
   font-size: 25px;
   font-family: 'Lobster Two', cursive;
+  color: #33f2f5;
+  height: 31px;
 }
 
 div.levels {

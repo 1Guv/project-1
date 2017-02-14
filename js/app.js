@@ -16,7 +16,7 @@ $(() => {
   const $startButton = $('.startButton');
 
   const $timer = $('.timer');
-  let time = 15;
+  let time = 20;
   // const $display = $('.display');
   const $buttonYo = $('.buttonyo');
   const $inputTextArea = $('#buttonyo');
@@ -38,7 +38,7 @@ $(() => {
   ///////////////////////////////////////
 
   //ARRAY & OBJECTS////////////////////////
-  const easyLetterWords = ['mole', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'bat', 'bear', 'hare'];
+  const easyLetterWords = ['mole', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'bat', 'bear', 'hare', 'deer', 'lynx', 'orca', 'puma', 'wolf', 'seal', 'zebra'];
   const meduimLetterWords = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile', 'mouse'];
   const hardLetterWords = ['Arctic Hare', 'Chimpanzee', 'Field Mouse', 'Paddymelon', 'Rhinoceros', 'Sperm Whale'];
   const impossible = ['Hippopotamus', 'Spider Monkey', 'Mountain Lion', 'Bandicoot Rat', 'Grey Squirrel'];
@@ -177,7 +177,7 @@ $(() => {
 
       updateScore();
       getRandomWords();
-      time += 3;
+      time += 5; // the time increases by 5 when you get a correct answer
       // nextWord();
       // alert('You have matched the words CORRECTLY');
 
@@ -250,7 +250,7 @@ $(() => {
   });
 
   $startButton.on('click', () => {
-    time = 15;
+    time = 20; // make it the same as the <div class="timer">20</div>
     $inputTextArea.removeAttr('placeholder', 'GAME OVER!'); // show Game Over in the input area
     $inputTextArea.removeAttr('disabled', 'disabled'); // disables the input area
     $buttonYo.removeAttr('disabled','disabled'); // removes the disable on the SUBMIT ANSWER button
