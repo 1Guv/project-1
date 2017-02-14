@@ -94,6 +94,10 @@ div.box3title {
   height: 800px;
   width: 100%;
   left: 1060px;
+
+  background-image: url('../images/snake.jpg');
+  background-repeat: cover;
+  opacity: 1;
 }
 
 div.div-button {

@@ -12,7 +12,7 @@ $(() => {
   const $leftButton = $('.left');
   const $rightButton = $('.right');
   const $highScoreScreen = $('.high-score');
-  // const $credits = $('.credits');
+  const $credits = $('.credits');
   const $startButton = $('.startButton');
   const $highScoreLocation = $('.form-game');
 
@@ -52,6 +52,13 @@ $(() => {
         opacity: 1,
         left: $screenWidth - 20 // slides back
       }, 250);
+    } else if (currentPage === 'creditspage') {
+      $box3.animate({
+        opacity: 1,
+        left: $screenWidth - 10 // slides right to the start
+      }, {
+        // animation complete
+      });
     } else {
       $box1.animate({
         opacity: 1,
@@ -66,6 +73,13 @@ $(() => {
       $box2.animate({
         left: $screenWidth - 20 // slides back
       }, 250);
+    } else if (currentPage === 'creditspage') {
+      $box3.animate({
+        opacity: 1,
+        left: $screenWidth - 10 // slides right to the start
+      }, {
+        // animation complete
+      });
     } else {
       $box1.animate({
         left: $screenWidth - 30 // slides right to the end - 30 so you can see the start of the div
@@ -82,15 +96,15 @@ $(() => {
     currentPage = 'highscorepage';
   }
 
-  // function creditsScreen() {
-  //   $box3.animate({
-  //     opacity: 1,
-  //     left: 0 // slides right to the end
-  //   }, {
-  //     // animation complete
-  //   });
-  //   currentPage = 'creditpage';
-  // }
+  function creditsScreen() {
+    $box3.animate({
+      opacity: 1,
+      left: 0 // slides right to the end
+    }, {
+      // animation complete
+    });
+    currentPage = 'creditspage';
+  }
 
   function updateScore() {
     totalScore = totalScore + 10;
@@ -236,7 +250,7 @@ $(() => {
   $leftButton.on('click', playScreen);
   $rightButton.on('click', menuScreen);
   $highScoreScreen.on('click', highScoreScreen);
-  // $credits.on('click', creditsScreen);
+  $credits.on('click', creditsScreen);
 
   // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
   $buttonYo.on('click', (e) => {
