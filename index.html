@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Guvs - Word Conundrum</title>
+    <title>Guvs - Animal Word Conundrum</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
@@ -20,8 +20,8 @@
         <form class="menu-form" action="index.html" method="post">
           <select name="selector" id="options">
             <option placeholder="Please choose a level:" disabled>Please choose a level:</option>
-            <option value="EASY">EASY - 3 to 4 letter words</option>
-            <option selected value="MEDUIM">MEDUIM - 5 to 8 letter words</option>
+            <option selected value="EASY">EASY - 3 to 4 letter words</option>
+            <option value="MEDUIM">MEDUIM - 5 to 8 letter words</option>
             <option value="HARD">HARD - 10 to 12 letter words</option>
             <option value="IMPOSSIBLE">IMPOSSIBLE - 12+ letter words</option>
           </select>
@@ -52,14 +52,19 @@
       </div>
 
 
-      <div class="box2 all-boxs">HIGH SCORES</div>
-      <div class="box3 all-boxs">CREDITS</div>
+      <div class="box2 all-boxs">
+        <div class="box2title">High Scores</div>
+      </div>
+
+      <div class="box3 all-boxs">
+        <div class="box3title">Credits</div>
+      </div>
 
       <div class="div-button">
         <button type="button" class="button left">PLAY</button>
         <button type="button" class="button right">MENU</button>
         <button type="button" class="button high-score">HIGH SCORES</button>
-        <!-- <button type="button" class="button credits">CREDITS</button> -->
+        <button type="button" class="button credits">CREDITS</button>
       </div>
 
     </div>

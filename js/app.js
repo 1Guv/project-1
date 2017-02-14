@@ -14,6 +14,7 @@ $(() => {
   const $highScoreScreen = $('.high-score');
   // const $credits = $('.credits');
   const $startButton = $('.startButton');
+  const $highScoreLocation = $('.form-game');
 
   const $timer = $('.timer');
   let time = 20;
@@ -30,7 +31,7 @@ $(() => {
   const $score = $('.score');
   let totalScore = null;
   // const chosenLevel = $('#options option:selected').val();
-  let chosenLevel = 'MEDUIM';
+  let chosenLevel = 'EASY';
   let chosenWordArray = null;
   //SOUNDS////////////////////////////////
   const $buzzerSound = $('#buzzer');
@@ -50,16 +51,12 @@ $(() => {
       $box2.animate({
         opacity: 1,
         left: $screenWidth - 20 // slides back
-      }, {
-        // animation complete
-      });
+      }, 250);
     } else {
       $box1.animate({
         opacity: 1,
         left: 0
-      }, {
-        // animation complete
-      });
+      }, 250);
     }
     currentPage = 'playpage';
   }
@@ -67,18 +64,12 @@ $(() => {
   function menuScreen() {
     if (currentPage === 'highscorepage') {
       $box2.animate({
-        opacity: 1,
         left: $screenWidth - 20 // slides back
-      }, {
-        // animation complete
-      });
+      }, 250);
     } else {
       $box1.animate({
-        opacity: 1,
         left: $screenWidth - 30 // slides right to the end - 30 so you can see the start of the div
-      }, {
-        // animation complete
-      });
+      }, 250);
     }
     currentPage = 'menupage';
   }
@@ -87,9 +78,7 @@ $(() => {
     $box2.animate({
       opacity: 1,
       left: 0 // slides right to the end
-    }, {
-      // animation complete
-    });
+    }, 250);
     currentPage = 'highscorepage';
   }
 
@@ -151,8 +140,16 @@ $(() => {
     console.log('input box & (button) has been disabled');
     $startButton.html('PLAY AGAIN'); // shows PLAY AGAIN in the button
 
-    // disable submit answer button
-    // ask for name and save score
+    addHighScore(); // ask for name and save score
+  }
+
+  function addHighScore() {
+    // show current score and ask for name
+    $highScoreLocation.html('<div class="askForUserName">foo</div>');
+    console.log('yo');
+    // store this in an OBJECT
+    // update object and then should be displayed in the High Score page with value the highest showing first
+
   }
 
   // check to see if the random word is the same as users inputted word
@@ -173,7 +170,7 @@ $(() => {
         $inputTextArea.attr('placeholder', 'Type your guess here'); // updates the placeholder
         $inputTextArea.css('font-size', 20);
         $inputTextArea.css('color', '#aaa');
-      }, 2000);
+      }, 1000);
 
       updateScore();
       getRandomWords();
