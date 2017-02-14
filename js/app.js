@@ -13,16 +13,17 @@ $(() => {
   const $rightButton = $('.right');
   const $highScoreScreen = $('.high-score');
   // const $credits = $('.credits');
+  const $startButton = $('.startButton');
 
   const $timer = $('.timer');
-  let time = 30;
-  const $display = $('.display');
+  let time = 15;
+  // const $display = $('.display');
   const $buttonYo = $('.buttonyo');
   const $inputTextArea = $('#buttonyo');
 
   let inputtedText = null;
   let randomWord = null;
-  const $startButton = $('.start');
+  // const $startButton = $('.start');
   const $liOne = $('.one');
   let currentPage = null;
 
@@ -37,7 +38,7 @@ $(() => {
   ///////////////////////////////////////
 
   //ARRAY & OBJECTS////////////////////////
-  const easyLetterWords = ['mole', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'toad', 'bear', 'hare'];
+  const easyLetterWords = ['mole', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'bat', 'bear', 'hare'];
   const meduimLetterWords = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile', 'mouse'];
   const hardLetterWords = ['Arctic Hare', 'Chimpanzee', 'Field Mouse', 'Paddymelon', 'Rhinoceros', 'Sperm Whale'];
   const impossible = ['Hippopotamus', 'Spider Monkey', 'Mountain Lion', 'Bandicoot Rat', 'Grey Squirrel'];
@@ -133,14 +134,25 @@ $(() => {
     const timerId = setInterval(() => {
       time--;
       $timer.html(time);
+      if (!time) {
+        clearInterval(timerId);
+        console.log('finished');
+        gameOver();
+        // show Play Again Button
+      }
     }, 1000);
+  }
 
-    setTimeout(() => {
-      clearInterval(timerId);
-      $display.html('Stop!');
-      $buttonYo.html('Play again?');
-      // toggleBoard();
-    }, 30000); // stop timer after 30 seconds
+  function gameOver() {
+    console.log('Game Over');
+    $inputTextArea.attr('placeholder', 'GAME OVER!'); // show Game Over in the input area
+    $inputTextArea.attr('disabled', 'disabled'); // disables the input area
+    $buttonYo.attr('disabled','disabled'); // disables the SUBMIT ANSWER button
+    console.log('input box & (button) has been disabled');
+    $startButton.html('PLAY AGAIN'); // shows PLAY AGAIN in the button
+
+    // disable submit answer button
+    // ask for name and save score
   }
 
   // check to see if the random word is the same as users inputted word
@@ -158,13 +170,14 @@ $(() => {
         $('input').removeClass('animated flip'); // remove class after 3 seconds
         // remove the word from the box
         $inputTextArea.val('');
-        $inputTextArea.attr('placeholder', 'Type your guess here'); // reupdates the placeholder
+        $inputTextArea.attr('placeholder', 'Type your guess here'); // updates the placeholder
         $inputTextArea.css('font-size', 20);
         $inputTextArea.css('color', '#aaa');
       }, 2000);
 
       updateScore();
       getRandomWords();
+      time += 3;
       // nextWord();
       // alert('You have matched the words CORRECTLY');
 
@@ -237,6 +250,13 @@ $(() => {
   });
 
   $startButton.on('click', () => {
+    time = 15;
+    $inputTextArea.removeAttr('placeholder', 'GAME OVER!'); // show Game Over in the input area
+    $inputTextArea.removeAttr('disabled', 'disabled'); // disables the input area
+    $buttonYo.removeAttr('disabled','disabled'); // removes the disable on the SUBMIT ANSWER button
+    $startButton.html('PLAY'); // shows PLAY in the button
+    totalScore = 0; // reset the score to zero
+    $score.text(totalScore); // changes the displayed score
     startTimer();
     chosenLevel = $('select[name=selector]').val(); // CHOSEN LEVELS GETS STORED HERE
     difficultyLevel();
