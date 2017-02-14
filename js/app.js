@@ -11,7 +11,7 @@ $(() => {
   const $box3 = $('.box3');
   const $leftButton = $('.left');
   const $rightButton = $('.right');
-  // const $bonus = $('.bonus');
+  const $highScoreScreen = $('.high-score');
   // const $credits = $('.credits');
 
   const $timer = $('.timer');
@@ -24,7 +24,7 @@ $(() => {
   let randomWord = null;
   const $startButton = $('.start');
   const $liOne = $('.one');
-  // let currentPage = null;
+  let currentPage = null;
 
   const $score = $('.score');
   let totalScore = null;
@@ -45,33 +45,67 @@ $(() => {
   ////////////////////////////
 
   function playScreen() {
-    $box1.animate({
-      opacity: 1,
-      left: 0
-    }, {
-      // animation complete
-    });
-    // currentPage = 'playpage';
-    scoreScreen();
-  }
-
-  function scoreScreen() {
-    $score.animate({
-      opacity: 1,
-      top: 5
-    }, {
-      // animation complete
-    });
+    if (currentPage === 'highscorepage') {
+      $box2.animate({
+        opacity: 1,
+        left: $screenWidth - 20 // slides back
+      }, {
+        // animation complete
+      });
+    } else {
+      $box1.animate({
+        opacity: 1,
+        left: 0
+      }, {
+        // animation complete
+      });
+    }
+    currentPage = 'playpage';
   }
 
   function menuScreen() {
-    $box1.animate({
+    if (currentPage === 'highscorepage') {
+      $box2.animate({
+        opacity: 1,
+        left: $screenWidth - 20 // slides back
+      }, {
+        // animation complete
+      });
+    } else {
+      $box1.animate({
+        opacity: 1,
+        left: $screenWidth - 30 // slides right to the end - 30 so you can see the start of the div
+      }, {
+        // animation complete
+      });
+    }
+    currentPage = 'menupage';
+  }
+
+  function highScoreScreen() {
+    $box2.animate({
       opacity: 1,
-      left: $screenWidth - 30 // slides right to the end - 30 so you can see the start of the div
+      left: 0 // slides right to the end
     }, {
       // animation complete
     });
-    // currentPage = 'menupage';
+    currentPage = 'highscorepage';
+  }
+
+  // function creditsScreen() {
+  //   $box3.animate({
+  //     opacity: 1,
+  //     left: 0 // slides right to the end
+  //   }, {
+  //     // animation complete
+  //   });
+  //   currentPage = 'creditpage';
+  // }
+
+  function updateScore() {
+    totalScore = totalScore + 10;
+    $score.text(totalScore);
+    console.log(totalScore);
   }
 
   // SETS THE WIDTH & HEIGHT FOR THE CURRENT VIEWING SCREEN IN CSS BOX1, 2 AND 3 & container
@@ -188,36 +222,10 @@ $(() => {
   //   time = 30;
   // }
 
-  function updateScore() {
-    totalScore = totalScore + 10;
-    $score.text(totalScore);
-    console.log(totalScore);
-  }
-
-  // function bonusScreen() {
-  //   $box2.animate({
-  //     opacity: 1,
-  //     left: 0 // slides right to the end
-  //   }, {
-  //     // animation complete
-  //   });
-  //   currentPage = 'bonuspage';
-  // }
-
-  // function creditsScreen() {
-  //   $box3.animate({
-  //     opacity: 1,
-  //     left: 0 // slides right to the end
-  //   }, {
-  //     // animation complete
-  //   });
-  //   currentPage = 'creditpage';
-  // }
-
   // EVENT LISTENERS ARE LISTED HERE:
   $leftButton.on('click', playScreen);
   $rightButton.on('click', menuScreen);
-  // $bonus.on('click', bonusScreen);
+  $highScoreScreen.on('click', highScoreScreen);
   // $credits.on('click', creditsScreen);
 
   // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
