@@ -375,7 +375,51 @@ div.submit-answer {
   font-weight: bold;
 }
 
+div.reset {
+    background-color: #207969;
+    width: 100px;
+    position: absolute;
+    left: 27%;
+    height: 27px;
+    text-align: center;
+    padding: 5px;
+    font-size: 23px;
+    color: white;
+}
+
+img {
+    border-style: none;
+    height: 321px;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    margin: 0 auto;
+    left: 38%;
+}
+
 @media only screen and (max-width: 640px) {
+
+  img {
+    border-style: none;
+    height: 321px;
+    position: absolute;
+    text-align: center;
+    top: 27%;
+    margin: 0 auto;
+    left: 6%;
+  }
+
+  div.reset {
+    background-color: #207969;
+    width: 62px;
+    position: absolute;
+    left: 15%;
+    height: 18px;
+    text-align: center;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+  }
 
   .container {
     background-color: #67BCDB; /*DUSTY*/

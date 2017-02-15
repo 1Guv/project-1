@@ -33,6 +33,8 @@ $(() => {
   // const chosenLevel = $('#options option:selected').val();
   let chosenLevel = 'EASY';
   let chosenWordArray = null;
+  let timerId = null;
+  // const $reset = $('.reset');
   //SOUNDS////////////////////////////////
   const $buzzerSound = $('#buzzer');
   const $shoryukenSound = $('#shoryuken');
@@ -58,7 +60,7 @@ $(() => {
       $box2.animate({
         opacity: 1,
         left: $screenWidth // slides back
-      }, 250);
+      }, 150);
     } else if (currentPage === 'creditspage') {
       $box3.animate({
         opacity: 1,
@@ -70,7 +72,7 @@ $(() => {
       $box1.animate({
         opacity: 1,
         left: 0
-      }, 250);
+      }, 150);
     }
     currentPage = 'playpage';
   }
@@ -79,7 +81,7 @@ $(() => {
     if (currentPage === 'highscorepage') {
       $box2.animate({
         left: $screenWidth // slides back
-      }, 250);
+      }, 150);
     } else if (currentPage === 'creditspage') {
       $box3.animate({
         opacity: 1,
@@ -90,7 +92,7 @@ $(() => {
     } else {
       $box1.animate({
         left: $screenWidth // slides right to the end - 30 so you can see the start of the div
-      }, 250);
+      }, 150);
     }
     currentPage = 'menupage';
   }
@@ -100,21 +102,16 @@ $(() => {
     if (currentPage === 'creditspage') {
       $box3.animate({
         left: $screenWidth // slides back
-      }, 250);
+      }, 150);
     } else if (currentPage === 'highscorepage') {
       $box2.animate({
         left: 0 // slides right to the start
-      }, 250);
+      }, 150);
     } else if (currentPage === 'playpage') {
       $box1.animate({
         left: $screenWidth // slides right to the end
-      }, 250);
+      }, 150);
     }
-
-    // $box2.animate({
-    //   opacity: 1,
-    //   left: 0 // slides right to the end
-    // }, 250);
     currentPage = 'highscorepage';
   }
 
@@ -156,7 +153,7 @@ $(() => {
 
     $timer.addClass('active');
 
-    const timerId = setInterval(() => {
+    timerId = setInterval(() => {
       time--;
       $timer.html(time);
       if (!time) {
@@ -200,7 +197,7 @@ $(() => {
       $shoryukenSound[0].play();
 
       setTimeout(function() {
-        $('input').removeClass('animated flip'); // remove class after 3 seconds
+        $('input').removeClass('animated flip'); // remove class after 1 seconds
         // remove the word from the box
         $inputTextArea.val('');
         $inputTextArea.attr('placeholder', 'Type your guess here'); // updates the placeholder
@@ -211,8 +208,6 @@ $(() => {
       updateScore();
       getRandomWords();
       time += 5; // the time increases by 5 when you get a correct answer
-      // nextWord();
-      // alert('You have matched the words CORRECTLY');
 
     } else if (inputtedText !== randomWord) {
       // alert('INCORRECT');
@@ -263,16 +258,33 @@ $(() => {
     }
   }
 
-  // function nextWord() {
-  //   $inputTextArea.val('');
-  //   time = 30;
-  // }
-
   // EVENT LISTENERS ARE LISTED HERE:
   $leftButton.on('click', playScreen);
   $rightButton.on('click', menuScreen);
   $highScoreScreen.on('click', highScoreScreen);
   $credits.on('click', creditsScreen);
+
+  $('.reset').click(function() {
+    clearInterval(timerId);
+    totalScore = 0;           // reset score
+    $score.text(totalScore); // changes the displayed score
+    console.log(totalScore);
+    chosenLevel = 'EASY';     // reset level to EASY
+    console.log(chosenLevel);
+    time = 20;                // reset time to 20 seconds
+    // $timer.html('20');        // update the timer display to 20
+    $timer.removeClass('active');
+    console.log(time);
+    $liOne.text('CLICK START'); // display this text in the random word loaction
+
+    setTimeout(function() {
+      $box1.animate({
+        opacity: 1,
+        left: $screenWidth // slides back
+      }, 150);
+    }, 1000);
+
+  });
 
   // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
   $buttonYo.on('click', (e) => {
