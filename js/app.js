@@ -44,6 +44,13 @@ $(() => {
   const hardLetterWords = ['Arctic Hare', 'Chimpanzee', 'Field Mouse', 'Paddymelon', 'Rhinoceros', 'Sperm Whale'];
   const impossible = ['Hippopotamus', 'Spider Monkey', 'Mountain Lion', 'Bandicoot Rat', 'Grey Squirrel'];
 
+  // const highScoreObj = {
+  //   Nya: 890,
+  //   Guv: 600,
+  //   Nav: 450,
+  //   Jake: 260
+  // };
+
   ////////////////////////////
 
   function playScreen() {
@@ -163,7 +170,7 @@ $(() => {
     console.log('yo');
     // store this in an OBJECT
     // update object and then should be displayed in the High Score page with value the highest showing first
-
+    // cant store this data yet because need to link to a database so will create a placeholder object that displays predetermined data for now
   }
 
   // check to see if the random word is the same as users inputted word
