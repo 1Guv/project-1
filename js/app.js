@@ -39,8 +39,8 @@ $(() => {
   ///////////////////////////////////////
 
   //ARRAY & OBJECTS////////////////////////
-  const easyLetterWords = ['mole', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'bat', 'bear', 'hare', 'deer', 'lynx', 'orca', 'puma', 'wolf', 'seal', 'zebra'];
-  const meduimLetterWords = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile', 'mouse'];
+  const easyLetterWords = ['mole', 'dog', 'cat', 'duck', 'emu', 'goat', 'lion', 'bat', 'bear', 'hare', 'deer', 'lynx', 'orca', 'puma', 'wolf', 'seal','zebra','horse','tiger','snake','sheep','whale','panda', 'mouse', 'shark', 'moose'];
+  const meduimLetterWords = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
   const hardLetterWords = ['Arctic Hare', 'Chimpanzee', 'Field Mouse', 'Paddymelon', 'Rhinoceros', 'Sperm Whale'];
   const impossible = ['Hippopotamus', 'Spider Monkey', 'Mountain Lion', 'Bandicoot Rat', 'Grey Squirrel'];
 
