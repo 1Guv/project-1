@@ -9,7 +9,7 @@
 
   background-image: url('../images/leopard.jpg');
   background-repeat: cover;
-  opacity: 0.9;
+  opacity: 1;
 
 }
 
@@ -19,7 +19,7 @@
   /*border: 1px solid black;*/
   height: 800px;
   width: 100%;
-  left: 1020px;
+  left: 1280px;
   background-image: url('../images/giraffe.jpg');
   background-repeat: cover;
   opacity: 0.9;
@@ -31,7 +31,7 @@
   /*border: 1px solid black;*/
   height: 800px;
   width: 100%;
-  left: 1040px;
+  left: 1280px;
 
   background-image: url('../images/tiger.jpg');
   background-repeat: cover;
@@ -93,7 +93,7 @@ div.box3title {
   /*border: 1px solid black;*/
   height: 800px;
   width: 100%;
-  left: 1060px;
+  left: 1280px;
 
   background-image: url('../images/snake-3.jpg');
   background-repeat: cover;

@@ -126,15 +126,15 @@ $(() => {
 
     $box1.css('height', $screenHeight);
     $box1.css('width', $screenWidth);
-    $box1.css('left', $screenWidth - 30); // width from the right
+    $box1.css('left', $screenWidth); // width from the right
 
     $box2.css('height', $screenHeight);
     $box2.css('width', $screenWidth);
-    $box2.css('left', $screenWidth - 20); // width from the right
+    $box2.css('left', $screenWidth); // width from the right
 
     $box3.css('height', $screenHeight);
     $box3.css('width', $screenWidth);
-    $box3.css('left', $screenWidth - 10); // width from the right
+    $box3.css('left', $screenWidth); // width from the right
   }
 
   function startTimer() {
