@@ -159,7 +159,7 @@ $(() => {
 
   function addHighScore() {
     // show current score and ask for name
-    $highScoreLocation.html('<div class="askForUserName">foo</div>');
+    $highScoreLocation.html('<div class="askForUserName">foo</div>'); // trying to get a lightbox to ask for user name
     console.log('yo');
     // store this in an OBJECT
     // update object and then should be displayed in the High Score page with value the highest showing first
@@ -255,7 +255,8 @@ $(() => {
   // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
   $buttonYo.on('click', (e) => {
     e.preventDefault();
-    inputtedText = $('#buttonyo').val();
+    inputtedText = $('#buttonyo').val().toLowerCase(); // allows for the input to be made in caps - useful when played on a mobile
+    // inputtedText.toLowerCase();
     console.log(inputtedText);
     checkMatch();
   });
