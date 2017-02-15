@@ -95,7 +95,7 @@ div.box3title {
   width: 100%;
   left: 1280px;
 
-  background-image: url('../images/snake-3.jpg');
+  background-image: url('../images/fur.jpg');
   background-repeat: cover;
   opacity: 1;
 }
@@ -339,16 +339,6 @@ div.submit-answer {
   /*background-color: red;*/
 }
 
-.display-score {
-    position: absolute;
-    padding: 0;
-    width: 100%;
-    margin: 0 auto;
-    top: 40%;
-    display: block;
-    text-align: center;
-}
-
 .display-name {
   font-size: 33px;
   font-family: verdana;
@@ -369,6 +359,20 @@ div.submit-answer {
   top: 40%;
   text-shadow: none;
   color: blue;
+}
+
+.name-and-score {
+  /* background-color: yellow; */
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 30%;
+  font-family: Lobster 2;
+  /* font-family: 'Lobster 2', cursive; */
+  font-size: 27px;
+  font-family: verdana;
+  color: #33f2f5;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 640px) {

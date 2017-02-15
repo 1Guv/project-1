@@ -57,12 +57,12 @@ $(() => {
     if (currentPage === 'highscorepage') {
       $box2.animate({
         opacity: 1,
-        left: $screenWidth - 20 // slides back
+        left: $screenWidth // slides back
       }, 250);
     } else if (currentPage === 'creditspage') {
       $box3.animate({
         opacity: 1,
-        left: $screenWidth - 10 // slides right to the start
+        left: $screenWidth // slides right to the start
       }, {
         // animation complete
       });
@@ -78,28 +78,43 @@ $(() => {
   function menuScreen() {
     if (currentPage === 'highscorepage') {
       $box2.animate({
-        left: $screenWidth - 20 // slides back
+        left: $screenWidth // slides back
       }, 250);
     } else if (currentPage === 'creditspage') {
       $box3.animate({
         opacity: 1,
-        left: $screenWidth - 10 // slides right to the start
+        left: $screenWidth // slides right to the start
       }, {
         // animation complete
       });
     } else {
       $box1.animate({
-        left: $screenWidth - 30 // slides right to the end - 30 so you can see the start of the div
+        left: $screenWidth // slides right to the end - 30 so you can see the start of the div
       }, 250);
     }
     currentPage = 'menupage';
   }
 
   function highScoreScreen() {
-    $box2.animate({
-      opacity: 1,
-      left: 0 // slides right to the end
-    }, 250);
+
+    if (currentPage === 'creditspage') {
+      $box3.animate({
+        left: $screenWidth // slides back
+      }, 250);
+    } else if (currentPage === 'highscorepage') {
+      $box2.animate({
+        left: 0 // slides right to the start
+      }, 250);
+    } else if (currentPage === 'playpage') {
+      $box1.animate({
+        left: $screenWidth // slides right to the end
+      }, 250);
+    }
+
+    // $box2.animate({
+    //   opacity: 1,
+    //   left: 0 // slides right to the end
+    // }, 250);
     currentPage = 'highscorepage';
   }
 
