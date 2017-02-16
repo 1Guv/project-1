@@ -142,6 +142,11 @@ $(() => {
   }
 
   function gameOver() {
+    $liOne.text('GAME OVER');
+    $liOne.css('color', 'red');
+    $liOne.css('font-weight', 'bold');
+    $liOne.css('font-size', '50');
+    $liOne.addClass('animated zoomIn');
     $inputTextArea.attr('placeholder', 'GAME OVER!');           // show Game Over in the input area
     $inputTextArea.attr('disabled', 'disabled');                // disables the input area
     $submitAnswerButton.attr('disabled','disabled');            // disables the SUBMIT ANSWER button
@@ -249,6 +254,7 @@ $(() => {
     $startButton.removeAttr('disabled','disabled');              // enables the START button by using removeAttr
     $inputTextArea.removeAttr('placeholder', 'GAME OVER!');      // show Game Over in the input area
     $inputTextArea.val('');                                      // removes any text eg attempted incorrect guesses from the input area
+    $liOne.css('color', 'white');
 
     setTimeout(function() {                        // using timeout to delay the screen 1 second from going back to the MENU screen to choose new difficulty level
       $box1.animate({left: $screenWidth}, 150);    // slides the screen out to reveal the MENU page
@@ -276,6 +282,7 @@ $(() => {
     difficultyLevel();                                          // goes to the difficultyLevel function
     getRandomWords();                                           // goes to the getRandomWords function
     $startButton.attr('disabled','disabled');                   // disables the START button once the game is in play (if not then the random word changes and timer goes funny)
+    $liOne.css('color', 'white');
   }
 
   // ALL EVENT LISTENERS ARE LISTED HERE:
