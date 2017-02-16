@@ -1,7 +1,5 @@
 $(() => {
 
-  // var awc = awc || {};
-
   //VARIABLES/////////////////////////////////////
   const $screenWidth = $(window).width();     // gets the current window WIDTH
   const $screenHeight = $(window).height();   // gets the current window HEIGHT

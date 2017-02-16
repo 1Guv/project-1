@@ -413,26 +413,32 @@ div.reset {
     color: white;
 }
 
-img {
-    border-style: none;
-    height: 321px;
+div.profile-pic {
+    /*background-color: yellow;*/
+    width: 100%;
     position: absolute;
     text-align: center;
-    top: 30%;
     margin: 0 auto;
-    left: 38%;
+    top: 25%;
+}
+
+img {
+    height: 321px;
 }
 
 @media only screen and (max-width: 640px) {
 
-  img {
-    border-style: none;
-    height: 321px;
+  div.profile-pic {
+    /*background-color: yellow;*/
+    width: 100%;
     position: absolute;
     text-align: center;
-    top: 27%;
     margin: 0 auto;
-    left: 6%;
+    top: 35%;
+  }
+
+  img {
+    height: 166px;
   }
 
   div.reset {
