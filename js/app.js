@@ -31,6 +31,7 @@ $(() => {
   let chosenLevel = 'EASY';                   // predetermined level is EASY - can change to MEDUIM,HARD or IMPOSSIBLE - also change HTML > move 'selected' to the correct option tag
   let chosenWordArray = null;                 // this will be the array chosen eg easyLetterWords, meduimLetterWords, hardLetterWords or impossible
   let timerId = null;                         // this is the start Timer value
+  const $resetButton = $('.reset');
   //SOUNDS////////////////////////////////
   const $buzzerSound = $('#buzzer');          // classic buzzer sound
   const $shoryukenSound = $('#shoryuken');    // classic shoryuken sound from street fighter 2
@@ -232,13 +233,7 @@ $(() => {
     }
   }
 
-  // ALL EVENT LISTENERS ARE LISTED HERE:
-  $playButton.on('click', playScreen);                // listening for the play button to be clicked
-  $menuButton.on('click', menuScreen);                // listening for the menu button to be clicked
-  $highScoreScreen.on('click', highScoreScreen);      // listening for the high score button to be clicked
-  $credits.on('click', creditsScreen);                // listening for the credits button to be clicked
-
-  $('.reset').click(function() {                                 // when the user clicks on the RESET in the PLAY screen - top left
+  function resetGame() {
     clearInterval(timerId);                                      // clear timer
     totalScore = 0;                                              // reset score
     $score.text(totalScore);                                     // changes the displayed score
@@ -253,24 +248,24 @@ $(() => {
     $startButton.html('START');                                  // shows START text in the button
     $startButton.removeAttr('disabled','disabled');              // enables the START button by using removeAttr
     $inputTextArea.removeAttr('placeholder', 'GAME OVER!');      // show Game Over in the input area
+    $inputTextArea.val('');                                      // removes any text eg attempted incorrect guesses from the input area
 
     setTimeout(function() {                        // using timeout to delay the screen 1 second from going back to the MENU screen to choose new difficulty level
       $box1.animate({left: $screenWidth}, 150);    // slides the screen out to reveal the MENU page
     }, 1000);                                      // 1 second delay
+  }
 
-  });
-
-
-  $submitAnswerButton.on('click', (e) => {                      // Get the inputted text (ID NEEDS TO GO ON THE INPUT BOX)
+  function inputValidation(e) {
     e.preventDefault();                                         // prevents the default submit button settings
     inputtedText = $('#buttonyo').val().toLowerCase();          // allows for the input to be made in caps - useful when played on a mobile
     console.log(inputtedText);                                  // log the inputted text to the console for testing
     checkMatch();                                               // goes to the checkMatch function
-  });
+  }
 
-  $startButton.on('click', () => {                              // pressing the start button starts the game
+  function startGame() {
     time = 20;                                                  // make it the same as the <div class="timer">20</div>
     $inputTextArea.removeAttr('placeholder', 'GAME OVER!');     // REMOVES the HTML text 'show Game Over' in the input area if its there - usually after user click reset
+    $inputTextArea.val('');                                     // removes any text eg attempted incorrect guesses from the input area
     $inputTextArea.removeAttr('disabled', 'disabled');          // REMOVES the HTML disabled from the input area so it becomes ENABLED
     $submitAnswerButton.removeAttr('disabled','disabled');      // REMOVES the HTML disable on the SUBMIT ANSWER button to make it ENABLED
     $startButton.html('START');                                 // shows PLAY text in the button
@@ -281,7 +276,16 @@ $(() => {
     difficultyLevel();                                          // goes to the difficultyLevel function
     getRandomWords();                                           // goes to the getRandomWords function
     $startButton.attr('disabled','disabled');                   // disables the START button once the game is in play (if not then the random word changes and timer goes funny)
-  });
+  }
+
+  // ALL EVENT LISTENERS ARE LISTED HERE:
+  $playButton.on('click', playScreen);                // listening for the play button to be clicked
+  $menuButton.on('click', menuScreen);                // listening for the menu button to be clicked
+  $highScoreScreen.on('click', highScoreScreen);      // listening for the high score button to be clicked
+  $credits.on('click', creditsScreen);                // listening for the credits button to be clicked
+  $resetButton.on('click', resetGame);                // when the user clicks on the RESET in the PLAY screen - top left
+  $submitAnswerButton.on('click', inputValidation);   // Get the inputted text (ID NEEDS TO GO ON THE INPUT BOX)
+  $startButton.on('click', startGame);                // pressing the start button starts the game
 
   // CALLED FUNCTIONS START HERE:
   setScreenSize();                      // this sets the width and height of the sliding divs so it looks appropriate on large manitors as well
