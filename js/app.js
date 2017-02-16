@@ -32,15 +32,22 @@ $(() => {
   let chosenWordArray = null;                 // this will be the array chosen eg easyLetterWords, meduimLetterWords, hardLetterWords or impossible
   let timerId = null;                         // this is the start Timer value
   //SOUNDS////////////////////////////////
-  const $buzzerSound = $('#buzzer');
-  const $shoryukenSound = $('#shoryuken');
+  const $buzzerSound = $('#buzzer');          // classic buzzer sound
+  const $shoryukenSound = $('#shoryuken');    // classic shoryuken sound from street fighter 2
   ///////////////////////////////////////
 
   //ARRAY & OBJECTS////////////////////////
+  // easy letter words comprises of animal names that are 3,4 and 5 letter words
   const easyLetterWords = ['mole','dog','cat','duck','emu','goat','lion','bat','bear','hare','deer','lynx','orca','puma','wolf','seal','zebra','horse','tiger','snake','sheep','whale','panda','mouse','shark','moose'];
-  const meduimLetterWords = ['elephant', 'giraffe', 'orangutan', 'kangaroo', 'squirrel', 'aardvark', 'alligator', 'leopard', 'crocodile'];
-  const hardLetterWords = ['chimpanzee', 'bandicoot', 'paddymelon', 'rhinoceros', 'antelope', 'anaconda', 'butterfly', 'flamingo', 'hedgehog', 'jellyfish'];
-  const impossible = ['hippopotamus', 'barracuda', 'chimpanzee', 'cockroach', 'dragonfly', 'grasshopper','hummingbird','rhinoceros','salamander','querquedule'];
+
+  // meduim letter words comprises of single animal names that are 6,7 and 8 letter words
+  const meduimLetterWords = ['elephant', 'giraffe', 'anteater', 'kangaroo', 'squirrel', 'aardvark', 'antelope', 'leopard', 'chipmunk', 'anaconda', 'flamingo', 'hedgehog'];
+
+  // hard letter words comprises of single animal names that are 9 and 10 letter words
+  const hardLetterWords = ['chimpanzee', 'bandicoot', 'paddymelon', 'rhinoceros', 'cockroach', 'dragonfly', 'butterfly', 'rhinoceros', 'salamander', 'jellyfish', 'orangutan', 'alligator', 'crocodile', 'barracuda', 'chimpanzee', 'grasshopper'];
+
+  // impossible words comprise of single animal names that are 11 letters or higher
+  const impossible = ['hippopotamus', 'cardophagus', 'barbastelle', 'flickertail', 'megatherium', 'wishtonwish','hummingbird','sivatherium','catamountain','querquedule', 'klipspringer'];
 
   // const highScoreObj = {
   //   Nya: 890,
@@ -54,11 +61,11 @@ $(() => {
   // Slides to the PLAY screen
   function playScreen() {
     if (currentPage === 'highscorepage') {
-      $box2.animate({left: $screenWidth}, 150);     // slides highscorepage back - 150 is the speed in mlilliseconds
+      $box2.animate({left: $screenWidth}, 150);     // slides highscorepage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     } else if (currentPage === 'creditspage') {
-      $box3.animate({left: $screenWidth}, 150);     // slides creditspage back
+      $box3.animate({left: $screenWidth}, 150);     // slides creditspage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     } else {
-      $box1.animate({left: 0}, 150);                // slides playpage back
+      $box1.animate({left: 0}, 150);                // slides playpage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     }
     currentPage = 'playpage';
   }
@@ -66,11 +73,11 @@ $(() => {
   // slides to the MENU SCREEN homepage
   function menuScreen() {
     if (currentPage === 'highscorepage') {
-      $box2.animate({left: $screenWidth}, 150);
+      $box2.animate({left: $screenWidth}, 150);   // slides highscorepage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     } else if (currentPage === 'creditspage') {
-      $box3.animate({left: $screenWidth}, 150);
+      $box3.animate({left: $screenWidth}, 150);   // slides creditspage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     } else {
-      $box1.animate({left: $screenWidth}, 150);
+      $box1.animate({left: $screenWidth}, 150);   // slides playpage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     }
     currentPage = 'menupage';
   }
@@ -78,55 +85,55 @@ $(() => {
   // slides to the HIGH SCORE SCREEN
   function highScoreScreen() {
     if (currentPage === 'creditspage') {
-      $box3.animate({left: $screenWidth}, 150);
+      $box3.animate({left: $screenWidth}, 150);     // slides creditspage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     } else if (currentPage === 'highscorepage') {
-      $box2.animate({left: 0}, 150);
+      $box2.animate({left: 0}, 150);                // slides highscorepage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     } else if (currentPage === 'playpage') {
-      $box1.animate({left: $screenWidth}, 150);
+      $box1.animate({left: $screenWidth}, 150);     // slides playpage back to original location hidden offscreen - 150 is the speed in mlilliseconds
     }
     currentPage = 'highscorepage';
   }
 
   // slides to the CREDITs screen
   function creditsScreen() {
-    $box3.animate({left: 0}, 150);    // moves the screen into display
+    $box3.animate({left: 0}, 150);    // moves the screen into the main container display
     currentPage = 'creditspage';
   }
 
   // updates the score in the PLAY screen top right
   function updateScore() {
-    totalScore = totalScore + 10;
-    $score.text(totalScore);
-    console.log(totalScore);
+    totalScore = totalScore + 10;                       // add 10 points to the score
+    $score.text(totalScore);                            // displays the new score on the screen
+    console.log(totalScore);                            // logs the new score in the console
   }
 
-  // SETS THE WIDTH & HEIGHT FOR THE CURRENT VIEWING SCREEN IN CSS BOX1, 2 AND 3 & container
-  // i used this to show an overlap on the left hand side however i have removed this now
+  // Sets the width & height for the current viewing screen in CSS BOX1(menuScreen), BOX2(highScoreScreen) and BOX3(creditsScreen) & the container for the homepage
+  // I used this to show an overlap on the left hand side however i have removed this now
   function setScreenSize() {
-    $container.css('height', $screenHeight);
-    $container.css('width', $screenWidth);
+    $container.css('height', $screenHeight);    // updates the CSS with the current screen height
+    $container.css('width', $screenWidth);      // updates the CSS with the current screen width
 
     $box1.css('height', $screenHeight);
     $box1.css('width', $screenWidth);
-    $box1.css('left', $screenWidth);          // width from the right
+    $box1.css('left', $screenWidth);      // updates the CSS with the width from the right eg this used to be $screenWidth - 30 to show a bit of the div like a tile effect
 
     $box2.css('height', $screenHeight);
     $box2.css('width', $screenWidth);
-    $box2.css('left', $screenWidth);          // width from the right
+    $box2.css('left', $screenWidth);      // updates the CSS with the width from the right eg this used to be $screenWidth - 30 to show a bit of the div like a tile effect
 
     $box3.css('height', $screenHeight);
     $box3.css('width', $screenWidth);
-    $box3.css('left', $screenWidth);          // width from the right
+    $box3.css('left', $screenWidth);     // updates the CSS with the width from the right eg this used to be $screenWidth - 30 to show a bit of the div like a tile effect
   }
 
   function startTimer() {
-    $timer.addClass('active');
-    // Timer whose interval is set to 20 seconds
-    timerId = setInterval(() => {
+    $timer.addClass('active');      // adds a class to the HTML to display the timer
+
+    timerId = setInterval(() => {   // Timer whose interval is set to 20 seconds
       time--;                       // reduces the timer by one
       $timer.html(time);            // updates the displayed time
       if (!time) {                  // when the time reaches zero falsy then the interval is cleared
-        clearInterval(timerId);
+        clearInterval(timerId);     // clears the interval
         console.log('finished');    // console logging
         gameOver();                 // goes to gameOver
       }
@@ -187,7 +194,7 @@ $(() => {
     }
   }
 
-  // Jumbles the word chosen from getRandomWords (please note does not work for words with spaces)
+  // Jumbles the word chosen from getRandomWords (please note does not work for words with spaces so this is reflected in the array of animal names)
   function jumbleWord(x) {                            // x = randomWord.toUpperCase
     const a = x.split('');                            // split the word into individual charcaters
     const n = a.length;                               // length of the chosen word
@@ -212,6 +219,7 @@ $(() => {
     jumbleWord(randomWord.toUpperCase());                                           // sends the random number to the jumbleWord function to jumble up the letters
   }
 
+  // Assigns the difficulty level to the variable chosenWordArray
   function difficultyLevel() {
     if (chosenLevel === 'EASY') {
       chosenWordArray = easyLetterWords;
@@ -224,64 +232,57 @@ $(() => {
     }
   }
 
-  // EVENT LISTENERS ARE LISTED HERE:
-  $playButton.on('click', playScreen);
-  $menuButton.on('click', menuScreen);
-  $highScoreScreen.on('click', highScoreScreen);
-  $credits.on('click', creditsScreen);
+  // ALL EVENT LISTENERS ARE LISTED HERE:
+  $playButton.on('click', playScreen);                // listening for the play button to be clicked
+  $menuButton.on('click', menuScreen);                // listening for the menu button to be clicked
+  $highScoreScreen.on('click', highScoreScreen);      // listening for the high score button to be clicked
+  $credits.on('click', creditsScreen);                // listening for the credits button to be clicked
 
-  $('.reset').click(function() {
-    clearInterval(timerId);
-    totalScore = 0;           // reset score
-    $score.text(totalScore); // changes the displayed score
-    console.log(totalScore);
-    chosenLevel = 'EASY';     // reset level to EASY
-    console.log(chosenLevel);
-    time = 20;                // reset time to 20 seconds
-    $timer.html(time);        // update the timer display to 20
-    $timer.removeClass('active');
-    console.log(time);
-    $liOne.text('CLICK START'); // display this text in the random word loaction
-    $startButton.html('START'); // shows PLAY in the button// upDate start button
-    $startButton.removeAttr('disabled','disabled'); // enables the START button by using removeAttr
-    $inputTextArea.removeAttr('placeholder', 'GAME OVER!'); // show Game Over in the input area
+  $('.reset').click(function() {                                 // when the user clicks on the RESET in the PLAY screen - top left
+    clearInterval(timerId);                                      // clear timer
+    totalScore = 0;                                              // reset score
+    $score.text(totalScore);                                     // changes the displayed score
+    console.log(totalScore);                                     // logs the score in the console
+    chosenLevel = 'EASY';                                        // reset level to EASY as the default option
+    console.log(chosenLevel);                                    // logs the chosen level in the console
+    time = 20;                                                   // reset time to 20 seconds
+    $timer.html(time);                                           // update the timer display to 20
+    $timer.removeClass('active');                                // removes the class for the timer so it doesnt show the timer going down
+    console.log(time);                                           // logs the time in the console
+    $liOne.text('CLICK START');                                  // display this text in the random word loaction
+    $startButton.html('START');                                  // shows START text in the button
+    $startButton.removeAttr('disabled','disabled');              // enables the START button by using removeAttr
+    $inputTextArea.removeAttr('placeholder', 'GAME OVER!');      // show Game Over in the input area
 
-    setTimeout(function() {
-      $box1.animate({
-        opacity: 1,
-        left: $screenWidth // slides back
-      }, 150);
-    }, 1000);
+    setTimeout(function() {                        // using timeout to delay the screen 1 second from going back to the MENU screen to choose new difficulty level
+      $box1.animate({left: $screenWidth}, 150);    // slides the screen out to reveal the MENU page
+    }, 1000);                                      // 1 second delay
 
   });
 
-  // Get the inputted text // ID NEEDS TO GO ON THE INPUT BOX
-  $submitAnswerButton.on('click', (e) => {
-    e.preventDefault();
-    inputtedText = $('#buttonyo').val().toLowerCase(); // allows for the input to be made in caps - useful when played on a mobile
-    // inputtedText.toLowerCase();
-    console.log(inputtedText);
-    checkMatch();
+
+  $submitAnswerButton.on('click', (e) => {                      // Get the inputted text (ID NEEDS TO GO ON THE INPUT BOX)
+    e.preventDefault();                                         // prevents the default submit button settings
+    inputtedText = $('#buttonyo').val().toLowerCase();          // allows for the input to be made in caps - useful when played on a mobile
+    console.log(inputtedText);                                  // log the inputted text to the console for testing
+    checkMatch();                                               // goes to the checkMatch function
   });
 
-  $startButton.on('click', () => {
-    time = 20; // make it the same as the <div class="timer">20</div>
-    $inputTextArea.removeAttr('placeholder', 'GAME OVER!'); // show Game Over in the input area
-    $inputTextArea.removeAttr('disabled', 'disabled'); // disables the input area
-    $submitAnswerButton.removeAttr('disabled','disabled'); // removes the disable on the SUBMIT ANSWER button
-    $startButton.html('START'); // shows PLAY in the button
-    totalScore = 0; // reset the score to zero
-    $score.text(totalScore); // changes the displayed score
-    startTimer();
-    chosenLevel = $('select[name=selector]').val(); // CHOSEN LEVELS GETS STORED HERE
-    difficultyLevel();
-    getRandomWords();
-    $startButton.attr('disabled','disabled');                //disable the START button
-    // alert(chosenLevel);
+  $startButton.on('click', () => {                              // pressing the start button starts the game
+    time = 20;                                                  // make it the same as the <div class="timer">20</div>
+    $inputTextArea.removeAttr('placeholder', 'GAME OVER!');     // REMOVES the HTML text 'show Game Over' in the input area if its there - usually after user click reset
+    $inputTextArea.removeAttr('disabled', 'disabled');          // REMOVES the HTML disabled from the input area so it becomes ENABLED
+    $submitAnswerButton.removeAttr('disabled','disabled');      // REMOVES the HTML disable on the SUBMIT ANSWER button to make it ENABLED
+    $startButton.html('START');                                 // shows PLAY text in the button
+    totalScore = 0;                                             // reset the score to zero
+    $score.text(totalScore);                                    // changes the displayed score to zero
+    startTimer();                                               // goes to the startTimer function
+    chosenLevel = $('select[name=selector]').val();             // current chosen level gets stored here
+    difficultyLevel();                                          // goes to the difficultyLevel function
+    getRandomWords();                                           // goes to the getRandomWords function
+    $startButton.attr('disabled','disabled');                   // disables the START button once the game is in play (if not then the random word changes and timer goes funny)
   });
 
   // CALLED FUNCTIONS START HERE:
-  setScreenSize();
-
-
+  setScreenSize();                      // this sets the width and height of the sliding divs so it looks appropriate on large manitors as well
 });
