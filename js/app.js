@@ -276,6 +276,7 @@ $(() => {
     $timer.removeClass('active');
     console.log(time);
     $liOne.text('CLICK START'); // display this text in the random word loaction
+    $startButton.html('START'); // shows PLAY in the button// upDate start button
 
     setTimeout(function() {
       $box1.animate({
@@ -300,7 +301,7 @@ $(() => {
     $inputTextArea.removeAttr('placeholder', 'GAME OVER!'); // show Game Over in the input area
     $inputTextArea.removeAttr('disabled', 'disabled'); // disables the input area
     $buttonYo.removeAttr('disabled','disabled'); // removes the disable on the SUBMIT ANSWER button
-    $startButton.html('PLAY'); // shows PLAY in the button
+    $startButton.html('START'); // shows PLAY in the button
     totalScore = 0; // reset the score to zero
     $score.text(totalScore); // changes the displayed score
     startTimer();
