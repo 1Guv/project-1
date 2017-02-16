@@ -15,7 +15,7 @@ This version of the conundrum has an animal theme where every conundrum is a sin
 
 The game is fully responsive so try it on your mobile.
 
-![Animal Conundrum - Mobile screen shot 1](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![Animal Conundrum - Mobile screen shot 1](https://github.com/1Guv/project-1/blob/master/images/AC-mobile-1.jpeg?raw=true "Animal Word Conundrum - Mobile screen shot")
 
 
 
