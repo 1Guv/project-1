@@ -283,11 +283,6 @@ $(() => {
     getRandomWords();                                           // goes to the getRandomWords function
     $startButton.attr('disabled','disabled');                   // disables the START button once the game is in play (if not then the random word changes and timer goes funny)
     $liOne.css('color', 'white');
-
-    setTimeout(function() {
-      $resetButton.animate({top: 27}, 1000);
-    }, 1000);
-
   }
 
   // ALL EVENT LISTENERS ARE LISTED HERE:
