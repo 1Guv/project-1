@@ -441,18 +441,6 @@ img {
     height: 166px;
   }
 
-  div.reset {
-    background-color: #207969;
-    width: 62px;
-    position: absolute;
-    left: 15%;
-    height: 18px;
-    text-align: center;
-    padding: 5px;
-    font-size: 16px;
-    color: white;
-  }
-
   .container {
     background-color: #67BCDB; /*DUSTY*/
     /*height: 800px;*/
