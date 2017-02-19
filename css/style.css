@@ -426,7 +426,23 @@ img {
     height: 321px;
 }
 
+div.div-themes {
+  /*background-color: yellow;*/
+  width: 100%;
+  text-align: center;
+  top: 70%;
+  position: absolute;
+}
+
 @media only screen and (max-width: 640px) {
+
+  div.div-themes {
+    /*background-color: yellow;*/
+    width: 100%;
+    text-align: center;
+    top: 46%;
+    position: absolute;
+  }
 
   div.profile-pic {
     /*background-color: yellow;*/
