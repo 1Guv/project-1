@@ -45,7 +45,7 @@ Home page screen shot below:
 
 ##The build:
 
-* HTML 5, CSS and jQuery were used to create this game.
+* JavaScript, HTML 5, CSS and jQuery were used to create this game.
 * Animation was created using the Animate.css stylesheet.
 * The web font 'Lobster 2' has been used to style the text.
 
